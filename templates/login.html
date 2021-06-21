@@ -1,0 +1,55 @@
+{% block main %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Web project</title>
+    <link rel="stylesheet" href="static/css/master.css">
+  </head>
+  <body>
+
+<div id="wrap" class="input">
+  <!-- <div class="container">
+    <div class="wrapper">
+     <div class="div-logo">
+       <img class="logo" src="static/uploads/cyfa.png" alt="">
+     </div>
+    </div>
+  </div> -->
+  <header class="input-header">
+    <h1>Project #1 In Python (uwgsi server) CYFA</h1>
+  </header>
+  <section class="input-content">
+    <h2>Socio<span>Cyfa Inc.</span></h2>
+    <form class="" action="/login" method="post">
+      <div class="" style="border-radius: 10px; margin-top: 30px; width: 40%; margin-left: 37%;padding-left: 100px; padding: 4px; border: 2px solid orangered;">
+          <p style="color:red; padding-left:20px;">{{msg}}</p>
+      </div>
+      <div class="input-content-wrap">
+        <dl class="inputbox">
+          <dt class="inputbox-title">Username</dt>
+          <dd class="inputbox-content">
+            <input id="input0" name="email" type="text" required/>
+            <label for="input0">UserID</label>
+            <span class="underline"></span>
+          </dd>
+        </dl>
+        <dl class="inputbox">
+          <dt class="inputbox-title">User Password</dt>
+          <dd class="inputbox-content">
+            <input id="input1" name="pass" type="password" required/>
+            <label for="input1">Password</label>
+            <span class="underline"></span>
+          </dd>
+        </dl>
+        <div class="btns">
+            <button type="submit" style="border-radius:10px;" class="btn btn-confirm">Login</button>
+            <a href="/signup" style="text-decoration:none; border-radius:10px;" class="btn btn-cancel">Register</a>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>
+  </body>
+</html>
+{% endblock main %}

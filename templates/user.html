@@ -1,0 +1,103 @@
+{% block main %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Web project</title>
+    <link rel="stylesheet" href="static/css/master.css">
+  </head>
+  <body>
+
+<div id="wrap" class="input">
+  <header class="input-header">
+    <h1>Project #1 In Python (uwgsi server) CYFA</h1>
+  </header>
+  <section class="input-content">
+    <h2>Socio<span>Cyfa Inc.</span></h2>
+    <form class="" action="/signup" method="post">
+      <div class="input-content-wrap">
+        <div class="container-wrapper">
+          <div class="avatar-holder">
+            <img class="profile" id="uploadPreview1" src="static/uploads/{{msg}}" alt="">
+          </div>
+          <!-- {% block content %}
+              {% if condition == True %}
+                  <div>blah blah blah blah</div>
+              {% else %}
+              <div>blah blah blah blah22</div>
+
+              {% endif %}
+          {% endblock %} -->
+
+          <div class="user-name-wrapper">
+            {% if user[1] == None %}
+            <a href="/edit-username" class="" style="color:red;">Please Edit your username</a>
+            {% else %}
+              <p class="user-name">{{ user[1] }}  <a href="/edit-username" class="" style="color:red;">Edit</a></p>
+            {% endif %}
+            <p class="user-name">{{ user[2] }}</p>
+          </div>
+        </div>
+
+       <div class="container-holder">
+         <div class="wrapper-holder">
+           <p class="item-txt">Your Items</p>
+
+          <div class="table-holder">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>DateTime</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+
+             {%for i in range(0, len)%}
+                <tr>
+                  <td>{{ [i + 1]  }}</td>
+                  <td>{{ products[i][0] }}</td>
+                  <td>{{ products[i][1] }}</td>
+                  <td><a href="product/{{ products[i][0] }}">{{ products[i][2] }}</a></td>
+                  <td>{{ products[i][4] }}</td>
+                  <td> <img src="static/uploads/{{ products[i][5]}}" width="50" height="50" alt=""></td>
+                  <td><a href="delete/{{ products[i][0]}}"> X </a> </td>
+                        <!-- <p style="color:red; padding-left:20px;"> {{  get_flashed_messages() }}</p> -->
+                        {% with messages = get_flashed_messages() %}
+                         {% if messages %}
+                            {% for message in messages %}
+                              <p style="color:green; padding-left:20px;"> {{ message }}</p>
+                            {% endfor %}
+                         {% endif %}
+                      {% endwith %}
+                </tr>
+             {%endfor%}
+              </tbody>
+            </table>
+
+              <div class="add-btn">
+                <a  href="/add-product" style="text-decoration:none; border-radius:10px;" class="btn-add">Add Product</a>
+              </div>
+          </div>
+
+         </div>
+       </div>
+
+        <div class="btns">
+            <a  href="/logout" style="text-decoration:none; border-radius:10px; background-color: blue;
+               padding: 10px;" class="btn btn-confirm">Logout</a>
+            <!-- <a href="/login" style="text-decoration:none; border-radius:10px;" class="btn btn-cancel">Login</a> -->
+        </div>
+
+      </div>
+    </form>
+  </section>
+</div>
+  </body>
+<script src="{{ url_for('static', filename='js/jsfile.js') }}"></script>
+</html>
+{% endblock main %}

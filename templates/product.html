@@ -1,0 +1,61 @@
+{% block main %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Web project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/master.css') }}">
+  </head>
+  <body>
+
+<div id="wrap" class="input">
+  <header class="input-header">
+    <h1>Project #1 In Python (uwgsi server) CYFA</h1>
+  </header>
+  <section class="input-content">
+    <h2>Socio<span>Cyfa Inc.</span></h2>
+    <form class="" action="/product/{{ item[0] }}" method="post" enctype="multipart/form-data">
+      <div class="input-content-wrap">
+        <div class="container-wrapper">
+          <div class="avatar-holder1">
+            <img class="profile1" id="uploadPreview1" src="../static/uploads/{{ item[5] }}" alt="">
+          </div>
+    <input type="hidden" name="id" value="{{ item[0] }}">
+        <div class="user-name-wrapper">
+            <div class="input-holder">
+              <!-- <input type="file" name="file" accept="image/*" > -->
+              <!-- <img src="static/uploads/{{ item[5] }}" alt=""> -->
+              <span class="underline"></span>
+              <input type="text" value="{{ item[1] }}" name="product_name" list="fruits" autocomplete="off" placeholder="Enter Product Name" required/>
+                <datalist id="fruits">
+                  <option>Apple</option>
+                  <option>Banana</option>
+                  <option>Orange</option>
+                  <option>Pineapple</option>
+                  <option>Kiwi</option>
+                </datalist>
+
+            </div>
+            <div class="ta-holder">
+              <textarea name="text" rows="8" class="textarea" cols="80">{{ item[2] }}</textarea>
+            </div>
+            <div class="btns">
+                <button  type="submit" style="text-decoration:none; border-radius:10px;" class="btn btn-confirm">Update</button>
+            </div>
+            {% with messages = get_flashed_messages() %}
+             {% if messages %}
+                {% for message in messages %}
+                  <p style="color:green; padding-left:20px;"> {{ message }}</p>
+                {% endfor %}
+             {% endif %}
+          {% endwith %}
+                <a href="/"> HOME </a>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>
+  </body>
+<script src="{{ url_for('static', filename='js/jsfile.js') }}"></script>
+</html>
+{% endblock main %}
